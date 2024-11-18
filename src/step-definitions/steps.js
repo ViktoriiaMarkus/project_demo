@@ -3,6 +3,7 @@ const { expect } = require('@wdio/globals');
 
 const LoginPage = require('../features/pageobjects/login.page');
 
+//clear the url
 Given('I am on the login page', async () => {
   await browser.url('');
 });
@@ -15,7 +16,8 @@ When('I clear the login form fields', () => {
   LoginPage.clearFields();
 });
 
-When('I clear the password field', async () => {
+//clear only password field
+When('I clear the password field', async () => { 
   await LoginPage.clearPassword();
 });
 
@@ -23,8 +25,8 @@ When('I click the login button', async () => {
   await LoginPage.loginButton.click();
 });
 
-Then('I should see the error message {string}', async (errorMessage) => {
-  await expect(LoginPage.errorMessage).toHaveText(errorMessage);
+Then('I should see the error message {string}', (errorMessage) => {
+  expect(LoginPage.errorMessage).toHaveText(errorMessage);
 });
 
 Then('I should see the page title as {string}', async (expectedTitle) => {

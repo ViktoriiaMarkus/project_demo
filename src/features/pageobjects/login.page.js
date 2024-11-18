@@ -31,6 +31,8 @@ class LoginPage extends Page{
     await this.usernameField.clearValue();
     await this.passwordField.clearValue();
   }
+
+  //added a method to clear only password field
   async clearPassword() {
     await this.passwordField.clearValue();
 }

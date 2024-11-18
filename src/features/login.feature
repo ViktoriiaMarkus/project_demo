@@ -1,9 +1,10 @@
 Feature: Login form validation on Saucedemo
 
+
   @smoke
   Scenario: Test Login form with empty credentials
     Given I am on the login page
-    When I enter credentials with username "Viktoriia" and password "12345678"
+    When I enter credentials with username "Viktoriia" and password "12345678" 
     And I clear the login form fields
     And I click the login button
     Then I should see the error message "Username is required."
