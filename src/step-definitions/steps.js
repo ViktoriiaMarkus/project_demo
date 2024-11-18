@@ -4,7 +4,7 @@ const { expect } = require('@wdio/globals');
 const LoginPage = require('../features/pageobjects/login.page');
 
 Given('I am on the login page', async () => {
-  await browser.url('https://www.saucedemo.com/');
+  await browser.url('');
 });
 
 When('I enter credentials with username {string} and password {string}', (username, password) => {
@@ -15,12 +15,16 @@ When('I clear the login form fields', () => {
   LoginPage.clearFields();
 });
 
-When('I click the login button', () => {
-  LoginPage.loginButton.click();
+When('I clear the password field', async () => {
+  await LoginPage.clearPassword();
 });
 
-Then('I should see the error message {string}', (errorMessage) => {
-  expect(LoginPage.errorMessage).toHaveText(errorMessage);
+When('I click the login button', async () => {
+  await LoginPage.loginButton.click();
+});
+
+Then('I should see the error message {string}', async (errorMessage) => {
+  await expect(LoginPage.errorMessage).toHaveText(errorMessage);
 });
 
 Then('I should see the page title as {string}', async (expectedTitle) => {

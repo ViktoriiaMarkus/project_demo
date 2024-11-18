@@ -21,16 +21,19 @@ class LoginPage extends Page{
     return browser.getTitle();
 }
 
-  login(username, password) {
-      this.usernameField.setValue(username);
-      this.passwordField.setValue(password);
-      this.loginButton.click();
+  async login(username, password) {
+      await this.usernameField.setValue(username);
+      await this.passwordField.setValue(password);
+      await this.loginButton.click();
   }
   
-  clearFields() {
-      this.usernameField.clearValue();
-      this.passwordField.clearValue();
+  async clearFields() {
+    await this.usernameField.clearValue();
+    await this.passwordField.clearValue();
   }
+  async clearPassword() {
+    await this.passwordField.clearValue();
+}
 }
 
 module.exports = new LoginPage();
